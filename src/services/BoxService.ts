@@ -1,10 +1,41 @@
+import { existsSync } from "node:fs";
+import { readFile, writeFile } from "node:fs/promises";
 import type { PokemonResumo } from "../models/Pokemon";
+import { LocalBoxError } from "../models/CustomErrors";
 import { formatarPokemon } from "../utils/textFormatters";
 
 export class CatalogoPokemon {
   private pokemons: PokemonResumo[] = [];
+  private caminhoArquivo: string;
 
-  adicionar(pokemon: PokemonResumo): void {
+  constructor(caminhoArquivo: string) {
+    this.caminhoArquivo = caminhoArquivo;
+  }
+
+  async carregar(): Promise<void> {
+    if (!existsSync(this.caminhoArquivo)) {
+      await this.salvar();
+      return;
+    }
+
+    try {
+      const texto = await readFile(this.caminhoArquivo, "utf-8");
+      this.pokemons = JSON.parse(texto);
+    } catch (erro) {
+      throw new LocalBoxError(`Não foi possível ler o arquivo ${this.caminhoArquivo}`);
+    }
+  }
+
+  private async salvar(): Promise<void> {
+    try {
+      const texto = JSON.stringify(this.pokemons, null, 2);
+      await writeFile(this.caminhoArquivo, texto, "utf-8");
+    } catch (erro) {
+      throw new LocalBoxError(`Não foi possível salvar o arquivo ${this.caminhoArquivo}`);
+    }
+  }
+
+  async adicionar(pokemon: PokemonResumo): Promise<void> {
     const jaExiste = this.pokemons.some((item) => item.id === pokemon.id);
 
     if (jaExiste) {
@@ -13,6 +44,7 @@ export class CatalogoPokemon {
     }
 
     this.pokemons.push(pokemon);
+    await this.salvar();
     console.log(`[OK] ${pokemon.nome} adicionado ao catálogo.`);
   }
 
@@ -28,7 +60,7 @@ export class CatalogoPokemon {
     });
   }
 
-  remover(id: number): void {
+  async remover(id: number): Promise<void> {
     const existe = this.pokemons.some((pokemon) => pokemon.id === id);
 
     if (!existe) {
@@ -37,6 +69,7 @@ export class CatalogoPokemon {
     }
 
     this.pokemons = this.pokemons.filter((pokemon) => pokemon.id !== id);
+    await this.salvar();
     console.log("[OK] Pokémon removido do catálogo.");
   }
 }
