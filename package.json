@@ -1,15 +1,20 @@
 {
   "name": "pokedex-typescript-lite",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Aplicação de terminal em Node.js e TypeScript que consulta a PokeAPI e organiza Pokémon em um catálogo local.",
+  "main": "dist/main.js",
   "scripts": {
-  "dev": "tsx src/main.ts",
-  "start": "tsx src/main.ts",
-  "build": "tsc"
-},
-  "keywords": [],
-  "author": "",
+    "dev": "tsx src/main.ts",
+    "start": "tsx src/main.ts",
+    "build": "tsc"
+  },
+  "keywords": [
+    "nodejs",
+    "typescript",
+    "pokeapi",
+    "pokedex"
+  ],
+  "author": "Murilo Paim",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
