@@ -19,7 +19,7 @@ Praticar os principais conceitos do Módulo 01:
 
 ## Vídeo de apresentação
 
-🎥 **Link do vídeo:** _(adicionar o link aqui)_
+**Link do vídeo:** https://drive.google.com/file/d/1gcu-pEgtiPf3Yurgx1-hwkJ0VcmvCfJZ/view?usp=sharing
 
 ## Tecnologias utilizadas
 
@@ -254,7 +254,7 @@ O atributo `pokemons` é `private` para que o catálogo só possa ser alterado p
 
 ## Organização do Kanban
 
-📋 **Link do Kanban:** https://github.com/users/MurilloPaim/projects/1
+**Link do Kanban:** https://github.com/users/MurilloPaim/projects/1
 
 O quadro foi criado no GitHub Projects, com as colunas Backlog, A Fazer, Em Andamento e Concluído. Resumo das tarefas:
 
@@ -274,7 +274,7 @@ O quadro foi criado no GitHub Projects, com as colunas Backlog, A Fazer, Em Anda
 | Criar menu interativo no terminal | Concluído |
 | Testar o fluxo completo | Concluído |
 | Escrever o README com exemplos de execução | Concluído |
-| Gravar o vídeo de apresentação | A fazer |
+| Gravar o vídeo de apresentação | Concluído |
 | Enviar links no AVA | A fazer |
 
 ## Branches utilizadas
